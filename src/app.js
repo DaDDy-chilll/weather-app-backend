@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const router = require("./routes");
 const morgan = require("morgan");
+const cors = require('cors')
 const helmet = require("helmet");
 const reateLimit = require("express-rate-limit");
 const apicach = require("apicache");
@@ -16,6 +17,7 @@ const limit = reateLimit({
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
+app.use(cors({methods:'GET'}))
 app.use(limit);
 app.use(helmet());
 app.set("trust proxy", 1);
