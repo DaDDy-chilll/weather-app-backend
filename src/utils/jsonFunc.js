@@ -4,9 +4,8 @@ const JsonToData = (json, name) => {
   if (!json) {
     throw new NotFound("Json data not found");
   } else {
-    const { weather, main, wind, cloud } = json;
-
-    const data = { name, ...weather[0], ...main, ...wind, ...cloud };
+    const { weather, main, wind, clouds } = json;
+    const data = { name, ...weather[0], ...main, ...wind, ...clouds };
     return data;
   }
 };
